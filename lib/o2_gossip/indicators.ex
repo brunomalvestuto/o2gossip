@@ -28,12 +28,12 @@ defmodule O2Gossip.Indicators do
   defp set_indicators(indicators, online_people), do: Enum.map indicators, &(update_indicator(&1, Enum.member?(online_people, &1.name)))
 
   defp update_indicator(indicator = %{ :status => status }, new_status) when status == new_status, do: indicator
-  defp update_indicator(indicator = %{:pid => pid, :name => name }, new_state = true) do
+  defp update_indicator(indicator = %{:pid => pid, "owner" => name }, new_state = true) do
     log("#{name} just got home.")
     GPIO.write(pid, !new_state)
     %{ indicator | :status => new_state }
   end
-  defp update_indicator(indicator = %{:pid => pid, :name => name }, new_state = false) do
+  defp update_indicator(indicator = %{:pid => pid, "owner" => name }, new_state = false) do
     log("#{name} just left.")
     GPIO.write(pid, !new_state)
     %{ indicator | :status => new_state }
