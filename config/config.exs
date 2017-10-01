@@ -11,7 +11,7 @@ use Mix.Config
 # You can configure your application as:
 #
 
-config :o2_gossip, :airodump_csv, {:system, :airodump_csv }
+config :o2_gossip, :airodump_csv, {:system, "AIRODUMP_CSV" }
 
 #
 # and access this configuration in your application as:

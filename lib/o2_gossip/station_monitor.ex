@@ -15,7 +15,7 @@ defmodule O2Gossip.StationMonitor do
   def handle_info(:update, interested_macs) do
     online_mac_addresses = whos_online_from(interested_macs)
     IO.inspect online_mac_addresses
-    #Indicators.update(online_mac_addresses)
+    Indicators.update(online_mac_addresses)
     schedule_work()
     {:noreply, online_mac_addresses}
   end
