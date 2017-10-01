@@ -4,15 +4,15 @@ defmodule O2Gossip do
   """
 
   @doc """
-  Hello world.
+  Start
 
   ## Examples
 
-      iex> O2Gossip.hello
+      iex> O2Gossip.start
       :world
 
   """
-  def hello do
-    :world
+  def start do
+    O2Gossip.Supervisor.start_link
   end
 end

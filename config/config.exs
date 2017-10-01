@@ -10,7 +10,9 @@ use Mix.Config
 
 # You can configure your application as:
 #
-#     config :o2_gossip, key: :value
+
+config :o2_gossip, :airodump_csv, {:system, :airodump_csv }
+
 #
 # and access this configuration in your application as:
 #
