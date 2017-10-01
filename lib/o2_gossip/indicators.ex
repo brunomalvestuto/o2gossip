@@ -25,7 +25,7 @@ defmodule O2Gossip.Indicators do
     {:noreply, set_indicators(state, online) }
   end
 
-  defp set_indicators(indicators, online_people), do: Enum.map indicators, &(update_indicator(&1, Enum.member?(online_people, &1.name)))
+  defp set_indicators(indicators, online_people), do: Enum.map indicators, &(update_indicator(&1, Enum.member?(online_people, Map.fetch!(&1, "owner"))))
 
   defp update_indicator(indicator = %{ :status => status }, new_status) when status == new_status, do: indicator
   defp update_indicator(indicator = %{:pid => pid, "owner" => name }, new_state = true) do
